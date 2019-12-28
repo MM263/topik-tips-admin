@@ -30,12 +30,18 @@
     },
     "language": {
       "type": "enumeration",
-      "enum": ["en", "ru"],
+      "enum": [
+        "en",
+        "ru"
+      ],
       "required": true
     },
     "tags": {
       "collection": "tag",
       "via": "articles"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
