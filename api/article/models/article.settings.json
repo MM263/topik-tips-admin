@@ -16,10 +16,6 @@
       "type": "string",
       "required": true
     },
-    "date": {
-      "type": "date",
-      "required": true
-    },
     "url": {
       "type": "string",
       "required": true
@@ -34,7 +30,8 @@
         "en",
         "ru"
       ],
-      "required": true
+      "required": true,
+      "default": "en"
     },
     "tags": {
       "collection": "tag",
