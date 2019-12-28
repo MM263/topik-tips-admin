@@ -1,0 +1,41 @@
+{
+  "connection": "default",
+  "collectionName": "articles",
+  "info": {
+    "name": "article"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "body": {
+      "type": "richtext"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "visible": {
+      "type": "boolean",
+      "default": false
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["en", "ru"],
+      "required": true
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "articles"
+    }
+  }
+}
