@@ -1,4 +1,6 @@
-'use strict';
+"use strict";
+
+const axios = require("axios");
 
 /**
  * Lifecycle callbacks for the `article` model.
@@ -35,7 +37,13 @@ module.exports = {
 
   // After creating a value.
   // Fired after an `insert` query.
-  // afterCreate: async (model, attrs, options) => {},
+  afterCreate: async () => {
+    const url = strapi.config.currentEnvironment.webhook;
+
+    if (url !== null) {
+      axios.post(url).catch(() => {});
+    }
+  },
 
   // Before updating a value.
   // Fired before an `update` query.
@@ -43,7 +51,13 @@ module.exports = {
 
   // After updating a value.
   // Fired after an `update` query.
-  // afterUpdate: async (model, attrs, options) => {},
+  afterUpdate: async (model, attrs, options) => {
+    const url = strapi.config.currentEnvironment.webhook;
+
+    if (url !== null) {
+      axios.post(url).catch(() => {});
+    }
+  },
 
   // Before destroying a value.
   // Fired before a `delete` query.
@@ -51,5 +65,11 @@ module.exports = {
 
   // After destroying a value.
   // Fired after a `delete` query.
-  // afterDestroy: async (model, attrs, options) => {}
+  afterDestroy: async (model, attrs, options) => {
+    const url = strapi.config.currentEnvironment.webhook;
+
+    if (url !== null) {
+      axios.post(url).catch(() => {});
+    }
+  }
 };
